@@ -1,7 +1,7 @@
 # Workout Trophy PWA — Project State
 
 ## Current Step
-**Step 14 — GitHub Pages** (NEXT)
+**All steps complete** — app ready to deploy
 
 ## Completed Steps
 - **Step 1 — Init** — claude.md, lessons_learned.md, .claude/skills.md created; Vite React TS project scaffolded; npm install complete; dev server running at http://localhost:5174/workout-tracker/
@@ -17,6 +17,7 @@
 - **Step 11 — Trophy Toast** — `src/components/TrophyToast.tsx`: slide-up from bottom, tier gradient text, countdown bar, Web Audio API chime (pitch varies by tier), queue-based with key-reset per entry, 4.5 s auto-dismiss.
 - **Step 12 — Settings View** — `src/views/SettingsView.tsx`: Appearance (theme segmented control), Preferences (weight unit kg/lbs), Data & Backup (stats grid, export JSON, import with success/error feedback), Danger Zone (two-step reset — preserves theme/unit), About section.
 - **Step 13 — PWA Config** — `vite-plugin-pwa` with `registerType: autoUpdate`, Workbox precache for `*.{js,css,html,ico,png,svg,md}`, manifest (name, theme_color #6366f1, standalone display), `public/icons/icon-192.png` + `icon-512.png` generated (black bg, white dumbbell). Build confirmed: sw.js + workbox generated, 11 entries precached.
+- **Step 14 — GitHub Pages** — `.gitignore` created, git repo initialized, initial commit on `main`. Deploy script: `npm run deploy` (builds then `gh-pages -d dist`). Awaiting user to create GitHub repo `workout-tracker` and push.
 
 ## Implementation Order
 1. [x] **Init** — claude.md, lessons_learned.md, .claude/skills.md, scaffold Vite project, dev server running
@@ -32,7 +33,7 @@
 11. [x] **Trophy Toast** — `src/components/TrophyToast.tsx`: slide-up from bottom, tier gradient, countdown bar, Web Audio chime (pitch by tier), queue-based, key-reset per entry
 12. [x] **Settings view** — theme toggle, weight unit, export/import JSON, stats summary, two-step reset
 13. [x] **PWA config** — vite-plugin-pwa, manifest, icons (black/white dumbbell, 192+512)
-14. [ ] **GitHub Pages** — base path `/workout-tracker/`, gh-pages deploy script
+14. [x] **GitHub Pages** — .gitignore, git init, initial commit on main, deploy via `npm run deploy`
 
 ## Active Decisions
 - Framework: React 18 + TypeScript
@@ -46,6 +47,13 @@
 - **Workout navigation**: Muscle group grid first → exercise list → exercise detail/log view
 - **Session summary**: Sticky bar above bottom nav showing today's set count and XP earned
 - **Theme toggle**: Lives in the top Nav/header, always visible — not near workout buttons
+
+## Git & Deploy Protocol
+- Every commit message must state **what changed and why** — not just "update X"
+- Every commit body must include a revert path so any change can be undone safely
+- Never force-push to `main` — use `git revert` to undo, never rewrite history
+- Run `npm run deploy` after every push that should go live
+- Full command reference in `.claude/skills.md`
 
 ## Key File Locations
 - Workout data source: `workouts.md` (root) → copied to `public/workouts.md` at runtime

@@ -18,6 +18,23 @@ Output goes to `dist/`. Base path is `/workout-tracker/` (configured in vite.con
 npm run deploy
 ```
 Uses `gh-pages` package to push `dist/` to the `gh-pages` branch.
+Remote: https://github.com/Qasem215/workout-tracker.git
+
+## Push a Change & Deploy
+```bash
+git add <files>
+git commit -m "what changed — why we did it"
+git push
+npm run deploy
+```
+
+## Roll Back a Live Deploy
+```bash
+git revert HEAD        # creates an undo commit, preserves history
+git push
+npm run deploy         # redeploys the reverted version
+```
+To restore a single file only: `git checkout <hash> -- <filepath>`
 
 ## Parser Convention (`src/lib/markdownParser.ts`)
 - Uses a state-machine approach over lines of workouts.md
