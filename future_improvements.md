@@ -145,3 +145,43 @@ builds and deploys to GitHub Pages on every push to `main`.
 - Currently the `npm run deploy` script using `gh-pages` requires manual triggering
 
 **Effort estimate:** ~30 minutes
+
+---
+
+## ☁️ Backup to Google Drive or Local Folder
+
+**What:** Let users save their backup JSON directly to Google Drive or download it to a specific local folder on their device, instead of relying on the browser's default download location.
+
+**How to implement:**
+- **Google Drive:** Use the Google Drive Picker API + OAuth2 — user authenticates once, then backups can be saved/loaded directly from a chosen Drive folder. Requires a Google Cloud project with Drive API enabled.
+- **Local folder:** Use the File System Access API (`window.showDirectoryPicker()`) — user picks a folder once, the app remembers it and can write backups there on demand. Works in Chrome/Edge; Safari support is limited.
+- Both can coexist with the existing Export/Import buttons in Settings as an enhanced option
+
+**Effort estimate:** ~4–6 hours (Google Drive OAuth flow is the bulk of the work)
+
+---
+
+## 🔐 Data Encryption with Password
+
+**What:** Optionally encrypt the exported JSON backup with a user-defined password so the file is unreadable without it — useful if backing up to shared storage like Google Drive or email.
+
+**How to implement:**
+- Use the Web Crypto API (`crypto.subtle`) — no external library needed, built into all modern browsers
+- On export: derive an AES-GCM key from the user's password via PBKDF2, encrypt the JSON blob, save as `.enc.json`
+- On import: prompt for password, derive the same key, decrypt before parsing
+- Password is never stored — if lost, the backup is unrecoverable (should be made clear to the user)
+
+**Effort estimate:** ~3–4 hours
+
+---
+
+## 📧 Send Backup via Email
+
+**What:** Let users email their backup JSON to themselves directly from the app — useful as a quick cross-device transfer without needing to manage files.
+
+**How to implement:**
+- **Simple approach:** Open a `mailto:` link with the backup data encoded in the body — works without a backend but has size limits (~2KB) and the JSON will be in plain text
+- **Better approach:** Use EmailJS or a lightweight serverless function (e.g. Cloudflare Worker) to send the file as an attachment — no backend server needed, free tier is sufficient for personal use
+- Combine with encryption (above) so the attachment is password-protected before sending
+
+**Effort estimate:** ~2 hours (mailto approach) or ~4–5 hours (EmailJS/serverless with attachment)
