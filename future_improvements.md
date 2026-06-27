@@ -161,17 +161,24 @@ builds and deploys to GitHub Pages on every push to `main`.
 
 ---
 
-## 🔐 Data Encryption with Password
+## 🔐 Two-Layer Data Encryption
 
-**What:** Optionally encrypt the exported JSON backup with a user-defined password so the file is unreadable without it — useful if backing up to shared storage like Google Drive or email.
+**What:** Optionally encrypt the exported JSON backup using two separate secrets — a short passcode (e.g. 4–6 digits, like a PIN) and a long password (a passphrase). Both are required to decrypt. Critically, if either is wrong the user only sees a single generic error ("Unable to decrypt") with no indication of which layer failed — making brute-force significantly harder.
+
+**How the two-layer scheme works:**
+- The short passcode and long password are combined (e.g. concatenated with a separator) before being fed into the key derivation function — they are treated as one secret internally
+- On import, the user enters both fields; the app combines them the same way and attempts decryption
+- If decryption fails for any reason (wrong passcode, wrong password, or both), only one message is shown: "Unable to decrypt backup" — the user cannot tell which field was wrong
+- This removes the ability to brute-force one layer at a time, since an attacker must guess both simultaneously
 
 **How to implement:**
 - Use the Web Crypto API (`crypto.subtle`) — no external library needed, built into all modern browsers
-- On export: derive an AES-GCM key from the user's password via PBKDF2, encrypt the JSON blob, save as `.enc.json`
-- On import: prompt for password, derive the same key, decrypt before parsing
-- Password is never stored — if lost, the backup is unrecoverable (should be made clear to the user)
+- Key derivation: `PBKDF2(passcode + ":" + password, salt, 310000 iterations, SHA-256)` → AES-GCM 256-bit key
+- On export: generate a random salt, derive key, encrypt JSON blob, save salt + ciphertext as `.enc.json`
+- On import: show two fields ("Passcode" and "Password"), combine, derive key with stored salt, attempt decrypt — catch any error and show only the generic message
+- Neither secret is ever stored anywhere — if both are lost, the backup is unrecoverable (warn the user clearly on export)
 
-**Effort estimate:** ~3–4 hours
+**Effort estimate:** ~4–5 hours
 
 ---
 
