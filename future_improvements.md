@@ -150,14 +150,17 @@ builds and deploys to GitHub Pages on every push to `main`.
 
 ## ☁️ Backup to Google Drive or Local Folder
 
-**What:** Let users save their backup JSON directly to Google Drive or download it to a specific local folder on their device, instead of relying on the browser's default download location.
+**What:** A "Back up to Google Drive" button in Settings — the user connects their Google account once, and from then on a single tap saves (or restores) their data directly to Drive. No file management, no manual uploads. The app does everything after the initial permission grant.
+
+**How it works for the user:**
+The user taps "Connect Google Drive" → a standard Google login popup appears → they sign in with their own Google account and approve access → done. From that point, backups go straight into their own Drive. The developer never sees, stores, or pays for anything — the data belongs entirely to the user.
 
 **How to implement:**
-- **Google Drive:** Use the Google Drive Picker API + OAuth2 — user authenticates once, then backups can be saved/loaded directly from a chosen Drive folder. Requires a Google Cloud project with Drive API enabled.
-- **Local folder:** Use the File System Access API (`window.showDirectoryPicker()`) — user picks a folder once, the app remembers it and can write backups there on demand. Works in Chrome/Edge; Safari support is limited.
-- Both can coexist with the existing Export/Import buttons in Settings as an enhanced option
+- **Google Drive:** Use the Google Drive API + OAuth2. The only developer step is a one-time free registration on Google Cloud (no billing, no ongoing cost) so Google knows the app's name when showing the permission prompt. After that, the app uploads/downloads directly between the user's browser and their own Drive.
+- **Local folder (bonus):** Use the File System Access API (`window.showDirectoryPicker()`) — user picks a folder once, the app remembers it and writes backups there on demand. Works in Chrome/Edge; Safari support is limited.
+- Both options can sit alongside the existing Export/Import buttons in Settings
 
-**Effort estimate:** ~4–6 hours (Google Drive OAuth flow is the bulk of the work)
+**Effort estimate:** ~4–6 hours (OAuth consent flow and Drive API integration is the bulk of the work)
 
 ---
 
