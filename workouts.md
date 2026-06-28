@@ -88,6 +88,19 @@
 - **Alternative**: Bird-Dog
 - **Description**: Lie on your back, slowly extend opposite arm and leg toward the floor without arching lower back.
 
+## Muscle Group: Cardio
+### Casual Walk
+- **Equipment**: None
+- **Alternative**: Indoor Pacing / Treadmill
+- **Unit**: minutes
+- **Description**: Maintain a steady, comfortable pace. Great for active recovery.
+
+### Step Counter
+- **Equipment**: Phone / Fitness Tracker
+- **Alternative**: Stationary Stepping
+- **Unit**: steps
+- **Description**: Accumulate total daily steps through general movement.
+
 ---
 
 # Difficulty: Intermediate
@@ -178,6 +191,19 @@
 - **Alternative**: Bodyweight Russian Twist
 - **Description**: Sit with knees bent, feet slightly off the floor, and twist your torso from side to side.
 
+## Muscle Group: Cardio
+### Power Walking
+- **Equipment**: None
+- **Alternative**: Incline Treadmill Walking
+- **Unit**: minutes
+- **Description**: Walk at an accelerated, brisk pace while pumping your arms to elevate your heart rate.
+
+### Steady-State Jogging
+- **Equipment**: None
+- **Alternative**: Stationary Jogging / Elliptical
+- **Unit**: km
+- **Description**: Maintain a continuous, moderate jogging pace where you can still speak in short sentences.
+
 ---
 
 # Difficulty: Advanced
@@ -267,6 +293,19 @@
 - **Equipment**: Sturdy Bench or Pole to grip
 - **Alternative**: Lying Leg Raise (Slow Negatives)
 - **Description**: Lock your shoulders down and lift your entire torso and legs into a straight line, lowering slowly.
+
+## Muscle Group: Cardio
+### Road Running
+- **Equipment**: Running Shoes
+- **Alternative**: Treadmill Sprinting
+- **Unit**: km
+- **Description**: High-intensity running over outdoor terrain, pushing for pace, distance, or time.
+
+### HIIT Sprints
+- **Equipment**: None
+- **Alternative**: Jump Rope Sprints
+- **Unit**: intervals
+- **Description**: Alternate between maximum-effort sprinting (20-30 seconds) and active recovery walking (60 seconds).
 
 ---
 
@@ -631,3 +670,57 @@
 ### Advanced Arms Mastery
 - **Condition**: Log at least 1 set for every exercise in Difficulty: Advanced -> Muscle Group: Arms.
 - **Reward**: 10000 XP
+
+# Cardio Trophies
+
+## Tier: Bronze
+### First Steps
+- **Condition**: Log a total of 5,000 steps in a single day.
+- **Reward**: 100 XP
+
+### Pavement Pounder
+- **Condition**: Log your first running or jogging distance track (any distance).
+- **Reward**: 100 XP
+
+### Time Flyer
+- **Condition**: Complete a continuous cardio session lasting 15 minutes or more.
+- **Reward**: 120 XP
+
+### Fresh Air
+- **Condition**: Log 2 outdoor walking or running sessions in a single week.
+- **Reward**: 150 XP
+
+## Tier: Silver
+### Daily Explorer
+- **Condition**: Reach 10,000 steps in a single day.
+- **Reward**: 400 XP
+
+### 5K Club
+- **Condition**: Track and complete a single running distance of 5 kilometers (3.1 miles) or more.
+- **Reward**: 500 XP
+
+### Engine Room
+- **Condition**: Complete a single continuous cardio session (running or power walking) for 45 minutes straight.
+- **Reward**: 500 XP
+
+### Speed Demon
+- **Condition**: Log a total of 8 HIIT sprint intervals in a single training session.
+- **Reward**: 450 XP
+
+## Tier: Gold
+### Marching Orders
+- **Condition**: Accumulate 100,000 cumulative tracked steps across your user history.
+- **Reward**: 2000 XP
+
+### Endurance Hunter
+- **Condition**: Track and complete a single running distance of 10 kilometers (6.2 miles) or more.
+- **Reward**: 2500 XP
+
+### Unstoppable Cardio Engine
+- **Condition**: Log at least 30 minutes of cardio, 3 times a week, for 4 consecutive weeks.
+- **Reward**: 2500 XP
+
+## Tier: Platinum
+### Cardio Master
+- **Condition**: Log at least 1 set for every exercise under Muscle Group: Cardio across all difficulty tiers.
+- **Reward**: 7500 XP
